@@ -9,8 +9,13 @@ Rails.application.routes.draw do
  # patch '/recipes/:id', to: 'recipes#update', as: 'update_recipe'
  # get '/recipes/:id', to: 'recipes#show', as: 'show_recipe'
  # delete '/recipes/:id', to: 'recipes#destroy', as: 'delete_recipe'
+  
+ resources :recipes do 
+   member do
+     post 'like'
+   end
+ end
  
- resources :recipes
- resources :chefs
+ 
 end
  
