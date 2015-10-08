@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "All Chef Listing" %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <%= will_paginate %>
+  </div>
+</div>
+<% @chefs.each do |chef| %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <%= link_to gravatar_for(chef, size: 100), chef_path(chef) %>
+    <p>
+      <h5>Chef Name: <%= chef.chefname %></h5>
+    </p>
+  </div>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <%= will_paginate %>
+  </div>
+</div>
+<h5>
+    <% if logged_in? %>
+    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-success btn-small" %>
+    <% end %>
+    <%= link_to 'Refresh Chef Listing', chefs_path, class: "btn btn-warning btn-small" %>
+</h5>

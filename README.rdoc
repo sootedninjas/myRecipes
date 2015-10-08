@@ -19,3 +19,16 @@ email: string
 3) email must be present
 4) email must be unique
 5) email must be valid
+
+
+Chefs:
+- Chef model and validation
+- chefs table with columns of chefname and email
+
+- add pw to the chef tables used for authentication
+- use email as authentication
+- Chef registration
+- Chef profile
+- Chef Listings
+- Chef login / logout
+- restrict login chefs to do create, edit, delete and like recipes
