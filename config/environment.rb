@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 # require 'carrierwave'
-require 'carrierwave/orm/activerecord'
+# require 'carrierwave/orm/activerecord'
