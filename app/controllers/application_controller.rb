@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:danger] = "Authentication Required"
-      redirect_to root_path
+      redirect_to recipes_path
     end
   end
 end

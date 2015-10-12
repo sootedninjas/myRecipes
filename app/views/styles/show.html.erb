@@ -1,36 +1,41 @@
-<%= render 'shared/page_title', title: "Profile Chef: " + @chef.chefname %>
+<%= render 'shared/page_title', title: "Recipes for Style " + @style.name %>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-4 center">
-    <%= gravatar_for @chef, size: 200 %>
-    <hr/>
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4 center">
-    <h3><em>Recipes:</em></h3>
-  </div>  
-</div>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to "Recipes", recipes_path %>
+  </li>
+  <li>
+    <%= link_to "Chefs", chefs_path %>
+  </li>
+</ul>
+
 <%= will_paginate @recipes %>
-<% @recipes.each do |recipe| %>
+<% @style.recipes.each do |recipe| %>
   <div class="row">
-    <div class="col-lg-6 well col-lg-offset-2 ">
+    <div class="col-md-2">
+      <section class="chef_info center">
+        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
+        <h5>Chef Name: <%= recipe.chef.chefname %></h5>
+      </section>
+    </div>
+    <div class="col-lg-6 well">
       <h4><%= link_to recipe.name, recipe_path(recipe)%></h4>
       <p><%= recipe.summary %></p>
       <p>Style: <%= render recipe.styles %></p>
       <p>Ingredients: <%= render recipe.ingredients %></p>
+      
       <p>
         <span class="quite"><small> created <%= time_ago_in_words(recipe.created_at) %> ago</small></span><br>
         <span class="quite"><small> updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span>
-      </p> 
-        <div class="pull-right">
+      </p>
+<div class="pull-right">
         <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
         <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp<%= recipe.thumbs_up_total  %>
         <% end %> &nbsp&nbsp&nbsp&nbsp
         <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
         <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp<%= recipe.thumbs_down_total  %>
         <% end %>
-        </div>
+</div>
     </div>
     <div class="col-md-4">
       <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
@@ -39,14 +44,10 @@
   <hr/>
 <% end %>
 <%= will_paginate @recipes %>
-<div class="row">
-<% if logged_in? %>
-<h5><% if @chef == current_user %>  
-    <%= link_to 'Edit Chef Profile', edit_chef_path(@chef), class: "btn btn-success btn-small" %>
-    <% end %>
+<h5>
+    <% if logged_in? %>
     <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-success btn-small" %>
-<% end %>   
-    <%= link_to 'Recipe Listing', recipes_path, class: "btn btn-warning btn-small" %>
-    <%= link_to 'Chef Listing', chefs_path, class: "btn btn-warning btn-small" %>
+    <% end %>
+    <%= link_to 'Refresh Recipes Listing', recipes_path, class: "btn btn-warning btn-small" %>
 </h5>
-</div>
+    

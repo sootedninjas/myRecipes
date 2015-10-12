@@ -6,14 +6,26 @@
 <div class="row">
   <div class="col-lg-2">
     <h3 class="midrow">
+      View Chefs
+    </h3>
+    <p><%= link_to "Browse Chef Listings", chefs_path, class: "btn btn-warning btn-small"%> </p>
+  </div>
+    <div class="col-lg-2">
+    <h3 class="midrow">
       View Recipes
     </h3>
     <p><%= link_to "Browse Recipe Listings", recipes_path, class: "btn btn-warning btn-small"%> </p>
   </div>
   <div class="col-lg-2">
     <h3 class="midrow">
-      View Chefs
+      View Styles
     </h3>
-    <p><%= link_to "Browse Chef Listings", chefs_path, class: "btn btn-warning btn-small"%> </p>
+    <p><%= link_to "Browse Style Listings", '', class: "btn btn-warning btn-small"%> </p>
+  </div>
+  <div class="col-lg-3">
+    <h3 class="midrow">
+      View Ingredients
+    </h3>
+    <p><%= link_to "Browse Ingredients Listings", '', class: "btn btn-warning btn-small"%> </p>
   </div>
 </div>
