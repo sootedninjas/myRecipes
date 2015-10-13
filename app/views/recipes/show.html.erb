@@ -28,8 +28,9 @@
 </div>
 <div class="row">
 <% if logged_in? %>
-<h5><% if @recipe.chef == current_user %>
+<h5><% if @recipe.chef == current_user || current_user.admin? %>
     <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn btn-success btn-small" %>
+    <%= link_to 'Delete Recipe', @recipe, method: :delete, data:{confirm: "Are you Sure ?"}, class: "btn btn-danger btn-small" %>
     <% end %>
     <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-success btn-small" %>
 <% end %>    
